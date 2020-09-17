@@ -9,7 +9,7 @@ let carousel = new Carousel(board);
 
 let _plants = [];
 
-let favoritter = [];
+let _favorits = [];
 
 async function getPlants() {
   let response = await fetch("http://sandrabirkefeldt.dk/wordpress/wp-json/wp/v2/posts");
@@ -37,9 +37,8 @@ function appendPlants(plants) {
 // Giver den liket plante et ID. Eks. ID 76, 79, 73...
 window.like = function like(id) {
   console.log("like, post id " + id);
-  favoritter.push(id);
-  console.log(favoritter);
-  FindFavorit(id)
+  _favorits.push(findFavorit(id));
+  appendFavorits();
 }
 
 // Disliker et billede
@@ -47,37 +46,46 @@ window.dislike = function dislike(id) {
   console.log("dislike, post id " + id);
 }
 
+window.showFavorit = function (id) {
+  showFavorit(id);
+}
+
 // FAVORIT SIDEN - Alle ens favoritter samlet
 // Henter ID'et fra den liket plante og kalder på funktionen forneden
-function FindFavorit(id) {
+function findFavorit(id) {
   for (const plant of _plants) {
     if (plant.id == id) {
-      appendFavorit(plant)
-      console.log(plant);
+      return plant;
     }
   }
 }
 // Henter den enkelte plante og tilføjer den til favoritsiden med innerHTML
-function appendFavorit(favorit) {
-  let favoritTemplate = /*html*/ `
-      <article onclick="showFavorit('${favorit.title.rendered}')">
+function appendFavorits() {
+  let favoritTemplate = "";
+  for (const favorit of _favorits) {
+    favoritTemplate += /*html*/ `
+      <article onclick="showFavorit('${favorit.id}')">
         <img src="${favorit.acf.image_1.url}">
         <h2>${favorit.title.rendered}</h2>
       </article>
     `;
-  document.querySelector('.favorit-container').innerHTML += favoritTemplate;
+  }
+  document.querySelector('.favorit-container').innerHTML = favoritTemplate;
 }
 
-function showFavorit(title) {
+function showFavorit(id) {
+  let plant = findFavorit(id);
   let template = /*html*/ `
-  <header class="topbar">
-    <h2>${title}</h2>
-    <div class="plante-container"></div>
-    <a href="#favoritter" class="fa" style="font-size: 50px; color: black; text-decoration: none; padding-left: 10px;">&#xf104;</a>
-    <img id="logo" style="width: 80px;" src="img/logo-hvid.png" alt="Logo i hvid">
+    <header class="topbar">
+      <h2>${plant.title.rendered}</h2>
+      <a href="#favoritter" class="fa" style="font-size: 50px; color: black; text-decoration: none; padding-left: 10px;">&#xf104;</a>
+      <img id="logo" style="width: 80px;" src="img/logo-hvid.png" alt="Logo i hvid">
     </header>
+    <div class="plante-container">
+      ${plant.content.rendered}
+    </div>
   `;
-  document.querySelector('.informationsside').innerHTML = template;
+  document.querySelector('#plant-information').innerHTML = template;
   navigateTo("plant-information");
 }
 

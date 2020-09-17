@@ -1,90 +1,91 @@
 <!DOCTYPE html>
 <html lang="da">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- HUSK UNIK TITLE TIL ALLE SIDER -->
-    <title></title>
-    <!-- Husk en beskrivelse af siden i content-->
-    <meta name="description" content="">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/slideshow.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- HUSK UNIK TITLE TIL ALLE SIDER -->
+        <title></title>
+        <!-- Husk en beskrivelse af siden i content-->
+        <meta name="description" content="">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/slideshow.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-</head>
+    </head>
 
-<body onhashchange="pageChange()">
+    <body onhashchange="pageChange()">
 
-    <nav class="navigation">
-        <hr>
-        <a href="#favoritter"><img src="img/favorit.png" alt="favorit"></a>
-        <a href="#plants"><img src="img/swipe.png" alt="swipe"></a>
-        <a href="#profil"><img src="img/profil.png" alt="profil"></a>
-        <a href="#hjaelp"><img src="img/hjaelp.png" alt="hjælp"></a>
-    </nav>
+        <nav class="navigation">
+            <hr>
+            <a href="#favoritter"><img src="img/favorit.png" alt="favorit"></a>
+            <a href="#plants"><img src="img/swipe.png" alt="swipe"></a>
+            <a href="#profil"><img src="img/profil.png" alt="profil"></a>
+            <a href="#hjaelp"><img src="img/hjaelp.png" alt="hjælp"></a>
+        </nav>
 
-    <main>
-        <!-- SIDER -->
+        <main>
+            <!-- SIDER -->
 
-        <!-- SWIPE-SIDE -->
-        <section id="plants" class="page">
-            <img id="logo" src="img/logo-gron.png" alt="logo">
-            <div id="board"></div>
+            <!-- SWIPE-SIDE -->
+            <section id="plants" class="page">
+                <img id="logo" src="img/logo-gron.png" alt="logo">
+                <div id="board"></div>
 
-            <div class="knapper">
-                <button><img src="img/dislike.png" alt=""></button>
-                <button><img src="img/like.png" alt=""></button>
-            </div>
+                <div class="knapper">
+                    <button><img src="img/dislike.png" alt=""></button>
+                    <button><img src="img/like.png" alt=""></button>
+                </div>
 
-        </section>
+            </section>
 
-        <!-- FAVORIT SIDE -->
-        <section id="favoritter" class="page">
-            <header>
-                <h2 style="text-align: center;">Mine favoritter</h2>
+            <!-- FAVORIT SIDE -->
+            <section id="favoritter" class="page">
+                <header>
+                    <h2 style="text-align: center;">Mine favoritter</h2>
+                </header>
                 <div class="favorit-container"></div>
-            </header>
-        </section>
+            </section>
 
-        <section id="profil" class="page">
+            <section id="profil" class="page">
 
-        </section>
+            </section>
 
-        <section id="plant-information" class="page">
-            <div class="informationsside"></div>
-        </section>
+            <section id="plant-information" class="page">
 
-        <!-- PROFIL SIDE -->
-        <section id="profile" class="page">
-            <header class="topbar">
-              <h2>Profile</h2>
-              <a class="right" href="#" onclick="logout()">Logout</a>
-            </header>
-            <div id="user-data"></div>
-          </section>
+            </section>
 
-        <!-- LOGIN SIDE -->
-        <section id="login" class="page">
-            <header class="topbar">
-                <h2>Login</h2>
-            </header>
-            <!-- firebase auth container  -->
-            <section id="firebaseui-auth-container"></section>
-        </section>
+            <!-- PROFIL SIDE -->
+            <section id="profile" class="page">
+                <header class="topbar">
+                    <h2>Profile</h2>
+                    <a class="right" href="#" onclick="logout()">Logout</a>
+                </header>
+                <div id="user-data"></div>
+            </section>
+
+            <!-- LOGIN SIDE -->
+            <section id="login" class="page">
+                <header class="topbar">
+                    <h2>Login</h2>
+                </header>
+                <!-- firebase auth container  -->
+                <section id="firebaseui-auth-container"></section>
+            </section>
 
 
-    </main>
+        </main>
 
-    <!-- Firebase App (the core Firebase SDK)-->
-    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
-    <script src="/__/firebase/7.20.-/firebase-auth.js"></script>
-    <script src="/__/firebase/7.20.-/firebase-firestore.js"></script>
+        <!-- Firebase App (the core Firebase SDK)-->
+        <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+        <script src="/__/firebase/7.20.-/firebase-auth.js"></script>
+        <script src="/__/firebase/7.20.-/firebase-firestore.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-    <script src="js/main.js" type="module"></script>
-    <script src="js/spa.js"></script>
-</body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+        <script src="js/main.js" type="module"></script>
+        <script src="js/spa.js"></script>
+    </body>
 
 </html>
